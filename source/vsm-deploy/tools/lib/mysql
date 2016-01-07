@@ -16,9 +16,9 @@
 # under the License.
 
 function _install_and_configure_mysql() {
-    if  rpm -q mysql-libs > /dev/null; then
-        rpm -e mysql-libs --nodeps > /dev/null
-    fi
+    #if  rpm -q mysql-libs > /dev/null; then
+    #    rpm -e mysql-libs --nodeps > /dev/null
+    #fi
     service mysql restart
     if [[ `cat /etc/my.cnf | grep "firsttime" | wc -l` -eq 0 ]]; then
         mysqladmin -uroot password $MYSQL_ROOT_PASSWORD

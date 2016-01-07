@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Copyright 2014 Intel Corporation, All Rights Reserved.
 
@@ -18,6 +18,19 @@
 #-------------------------------------------------------------------------------
 #            Usage
 #-------------------------------------------------------------------------------
+
+alias | grep  -q cp
+if [ $? -eq 0 ]; then
+  unalias cp
+fi
+alias | grep  -q mv
+if [ $? -eq 0 ]; then
+  unalias mv
+fi
+alias | grep  -q rm
+if [ $? -eq 0 ]; then
+  unalias rm
+fi
 
 function usage() {
     cat << EOF
@@ -58,18 +71,18 @@ mkdir -p release/$VERSION-$DATE
 
 bash +x buildrpm
 
-sudo cp README.md release/$VERSION-$DATE/README
-sudo cp INSTALL.md release/$VERSION-$DATE
-sudo cp INSTALL.pdf release/$VERSION-$DATE
-sudo cp install.sh release/$VERSION-$DATE
-sudo cp uninstall.sh release/$VERSION-$DATE
-sudo cp LICENSE release/$VERSION-$DATE
-sudo cp NOTICE release/$VERSION-$DATE
-sudo cp CHANGELOG.md release/$VERSION-$DATE
-sudo cp CHANGELOG.pdf release/$VERSION-$DATE
-sudo cp hostrc release/$VERSION-$DATE
-sudo cp -r manifest release/$VERSION-$DATE
-sudo cp -r vsmrepo release/$VERSION-$DATE
+sudo cp -rf README.md release/$VERSION-$DATE/README
+sudo cp -rf INSTALL.md release/$VERSION-$DATE
+sudo cp -rf INSTALL.pdf release/$VERSION-$DATE
+sudo cp -rf install.sh release/$VERSION-$DATE
+sudo cp -rf uninstall.sh release/$VERSION-$DATE
+sudo cp -rf LICENSE release/$VERSION-$DATE
+sudo cp -rf NOTICE release/$VERSION-$DATE
+sudo cp -rf CHANGELOG.md release/$VERSION-$DATE
+sudo cp -rf CHANGELOG.pdf release/$VERSION-$DATE
+sudo cp -rf hostrc release/$VERSION-$DATE
+sudo cp -rf manifest release/$VERSION-$DATE
+sudo cp -rf vsmrepo release/$VERSION-$DATE
 
 cd release
 tar -czvf $VERSION-$DATE.tar.gz $VERSION-$DATE
