@@ -22,6 +22,8 @@ TOPDIR=$(cd "$(dirname "$0")" && pwd)
 
 rm -rf $TOPDIR/vsmrepo.tar.gz
 rm -rf $TOPDIR/vsmrepo
+mkdir $TOPDIR/vsmrepo
+
 cd $TOPDIR
 
 set -o xtrace

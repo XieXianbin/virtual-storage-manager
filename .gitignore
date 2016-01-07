@@ -8,3 +8,5 @@ vsmrepo/
 *pyo
 ./update.sh
 *orig
+/.settings/
+/.project
