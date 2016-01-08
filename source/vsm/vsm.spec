@@ -194,9 +194,9 @@ install -p -D -m 755 tools/spot_info_list %{buildroot}%{_usr}/local/bin/spot_inf
 install -p -D -m 755 tools/vsm-reporter.py %{buildroot}%{_usr}/local/bin/vsm-reporter
 
 %pre
-getent group vsm >/dev/null || groupadd -r vsm --gid 165
+getent group vsm >/dev/null || groupadd -r vsm --gid 166
 if ! getent passwd vsm >/dev/null; then
-  useradd -u 165 -r -g vsm -G vsm,nobody -d %{_sharedstatedir}/vsm -s /sbin/nologin -c "Vsm Storage Services" vsm
+  useradd -u 166 -r -g vsm -G vsm,nobody -d %{_sharedstatedir}/vsm -s /sbin/nologin -c "Vsm Storage Services" vsm
 fi
 mkdir -p /var/run/vsm/
 mkdir -p /var/log/vsm/

@@ -43,7 +43,7 @@ service httpd stop
 mysql -uroot -p`cat /etc/vsmdeploy/deployrc | grep ROOT | awk -F "=" '{print $2}'` < ./vsm.sql
 
 cd /root/
-service mysql start
+service mysqld start
 service rabbitmq-server start
 service vsm-api start
 service vsm-conductor start

@@ -368,7 +368,7 @@ global_opts = [
                 default=False,
                 help='Whether snapshots count against GigaByte quota'),
     cfg.StrOpt('default_zone',
-                default='zone_one',
+                default='zone_one', 
                 help='The default one zone name'), ]
 
 FLAGS.register_opts(global_opts)

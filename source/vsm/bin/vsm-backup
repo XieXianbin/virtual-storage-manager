@@ -23,7 +23,7 @@ rm -rf $TEMP/*
 
 cp -rf /etc/vsmdeploy/deployrc $TEMP/
 cp -rf /etc/manifest/* $TEMP/
-service mysql start
+service mysqld start
 mysqldump -uroot -p`cat /etc/vsmdeploy/deployrc | grep ROOT | awk -F "=" '{print $2}'` --opt --events --all-databases > $TEMP/vsm.sql
 cd /opt/
 

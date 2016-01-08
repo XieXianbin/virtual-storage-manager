@@ -1,5 +1,5 @@
 
-controller_service="mysql rabbitmq keystone vsm_api vsm_conductor vsm_scheduler http"
+controller_service="mysqld rabbitmq keystone vsm_api vsm_conductor vsm_scheduler http"
 storage_node_service="vsm_agent vsm_physical"
 
 function __check_controller_services() {
@@ -41,7 +41,7 @@ function __check_storage_node_services() {
 }
 
 function check_mysql_status() {
-	mysql_status_value=`service mysql status|grep running|wc -l`+`service mysql status|grep "not running"|wc -l`
+	mysql_status_value=`service mysqld status|grep running|wc -l`+`service mysql status|grep "not running"|wc -l`
 	if [ $mysql_status_value == "1+0" ]; then
 		echo "[info]: mysql is running" >> $1
 	else

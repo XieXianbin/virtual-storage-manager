@@ -256,9 +256,12 @@ class AgentManager(manager.Manager):
         self._cluster_id = cluster_id
         cluster_id_file = os.path.join(FLAGS.state_path, 'cluster_id')
         utils.write_file_as_root(cluster_id_file, self._cluster_id, 'w')
+
+        LOG.info('_____ %(a)s %(b)s' % {"a": self._context, "b": self._node_info['zone']})
         # Get zone_id
         zone_ref = db.zone_get_by_name(self._context,
                                        self._node_info['zone'])
+        LOG.info('_____ %s' % zone_ref)
         if zone_ref:
             zone_id = zone_ref['id']
         else:
